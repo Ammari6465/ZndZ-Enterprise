@@ -1,0 +1,416 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --color-brand-bg: #F5F2ED;
+  --color-brand-text: #00214E;
+  --color-brand-accent: #035CA8;
+  --color-brand-navy: #00214E;
+  --color-brand-blue: #035CA8;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ==========================================================================
+   SCROLL ANIMATIONS & INTERSECTION OBSERVER EFFECTS
+   ========================================================================== */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   FLOATING CTA STYLES
+   ========================================================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   RIPPLE EFFECT FOR BUTTONS
+   ========================================================================== */
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   GRADIENT OVERLAYS
+   ========================================================================== */
+
+.gradient-overlay {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+}
+
+/* ==========================================================================
+   GLASSMORPHISM ENHANCEMENTS
+   ========================================================================== */
+
+.glass-nav {
+  background: rgba(245, 242, 237, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-nav {
+  background: rgba(10, 15, 26, 0.85);
+}
+
+/* ==========================================================================
+   PARALLAX HERO SECTION
+   ========================================================================== */
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ==========================================================================
+   IMAGE ZOOM ON HOVER
+   ========================================================================== */
+
+.img-zoom {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+   CARD HOVER EFFECTS
+   ========================================================================== */
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+}
+
+/* ==========================================================================
+   INDUSTRIAL COLORS
+   ========================================================================== */
+
+.industrial-steel {
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+}
+
+.industrial-accent {
+  background: linear-gradient(135deg, #1B4F8C 0%, #2E6DAE 100%);
+}
+
+.industrial-navy {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 35s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   HIGH-FIDELITY DARK MODE OVERRIDES (EDITORIAL AESTHETIC)
+   ========================================================================== */
+
+.dark {
+  color-scheme: dark;
+  background-color: #0A0F1A !important;
+  color: #F5F2ED !important;
+}
+
+/* Backgrounds */
+.dark .bg-\[\#F5F2ED\] {
+  background-color: #0A0F1A !important;
+}
+
+.dark .bg-\[\#F5F2ED\]\/95 {
+  background-color: rgba(10, 15, 26, 0.95) !important;
+}
+
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+.dark .bg-slate-50, 
+.dark .bg-gray-50, 
+.dark .bg-gray-100 {
+  background-color: #1E293B !important;
+}
+
+.dark .bg-gradient-to-br.from-gray-50.to-gray-100 {
+  background-image: linear-gradient(to bottom right, #111827, #1E293B) !important;
+}
+
+/* Text Colors */
+.dark .text-\[\#00214E\] {
+  color: #F5F2ED !important;
+}
+
+.dark .text-\[\#00214E\]\/60 {
+  color: rgba(245, 242, 237, 0.6) !important;
+}
+
+.dark .text-\[\#00214E\]\/70 {
+  color: rgba(245, 242, 237, 0.7) !important;
+}
+
+.dark .text-\[\#00214E\]\/80 {
+  color: rgba(245, 242, 237, 0.8) !important;
+}
+
+.dark .text-\[\#00214E\]\/90 {
+  color: rgba(245, 242, 237, 0.9) !important;
+}
+
+.dark .text-\[\#1A1A1A\] {
+  color: #F5F2ED !important;
+}
+
+.dark .text-\[\#1A1A1A\]\/60 {
+  color: rgba(245, 242, 237, 0.6) !important;
+}
+
+.dark .text-\[\#1A1A1A\]\/70 {
+  color: rgba(245, 242, 237, 0.7) !important;
+}
+
+.dark .text-\[\#1A1A1A\]\/80 {
+  color: rgba(245, 242, 237, 0.8) !important;
+}
+
+.dark .text-\[\#1A1A1A\]\/90 {
+  color: rgba(245, 242, 237, 0.9) !important;
+}
+
+.dark .text-slate-800, 
+.dark .text-gray-900, 
+.dark .text-gray-800 {
+  color: #FFFFFF !important;
+}
+
+.dark .text-gray-700, 
+.dark .text-gray-600 {
+  color: #E2DFDA !important;
+}
+
+.dark .text-gray-500, 
+.dark .text-gray-400 {
+  color: #B2B2B2 !important;
+}
+
+/* Watermarks & Decorative Opacities */
+.dark .opacity-\[0\.03\] {
+  opacity: 0.08 !important;
+}
+
+.dark .opacity-\[0\.02\] {
+  opacity: 0.04 !important;
+}
+
+/* Borders */
+.dark .border-\[\#00214E\]\/5 {
+  border-color: rgba(245, 242, 237, 0.08) !important;
+}
+
+.dark .border-\[\#00214E\]\/10 {
+  border-color: rgba(245, 242, 237, 0.12) !important;
+}
+
+.dark .border-\[\#00214E\]\/20 {
+  border-color: rgba(245, 242, 237, 0.22) !important;
+}
+
+.dark .border-\[\#1A1A1A\]\/5 {
+  border-color: rgba(245, 242, 237, 0.08) !important;
+}
+
+.dark .border-\[\#1A1A1A\]\/10 {
+  border-color: rgba(245, 242, 237, 0.12) !important;
+}
+
+.dark .border-\[\#1A1A1A\]\/20 {
+  border-color: rgba(245, 242, 237, 0.22) !important;
+}
+
+.dark .border-gray-100, 
+.dark .border-gray-200, 
+.dark .border-gray-300 {
+  border-color: rgba(245, 242, 237, 0.15) !important;
+}
+
+.dark .border-\[\#00214E\] {
+  border-color: #F5F2ED !important;
+}
+
+.dark .border-\[\#1A1A1A\] {
+  border-color: #F5F2ED !important;
+}
+
+/* Button & Card Interactivities */
+.dark .hover\:bg-\[\#00214E\]:hover {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+}
+
+.dark .hover\:bg-\[\#1A1A1A\]:hover {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+}
+
+.dark .hover\:text-\[\#F5F2ED\]:hover {
+  color: #0A0F1A !important;
+}
+
+.dark .group:hover .group-hover\:bg-\[\#00214E\] {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+}
+
+.dark .group:hover .group-hover\:bg-\[\#1A1A1A\] {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+}
+
+.dark .group:hover .group-hover\:text-\[\#F5F2ED\] {
+  color: #0A0F1A !important;
+}
+
+.dark button.bg-\[\#00214E\] {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+  border-color: #F5F2ED !important;
+}
+
+.dark button.bg-\[\#1A1A1A\] {
+  background-color: #F5F2ED !important;
+  color: #0A0F1A !important;
+  border-color: #F5F2ED !important;
+}
+
+/* SVGs inside main navbar / utility buttons */
+.dark #rfq-cart-btn svg, 
+.dark #dark-mode-toggle svg {
+  color: currentColor !important;
+}
+
+/* Inputs & Form Fields */
+.dark input, 
+.dark textarea, 
+.dark select {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(245, 242, 237, 0.25) !important;
+  color: #F5F2ED !important;
+}
+
+.dark input:focus, 
+.dark textarea:focus, 
+.dark select:focus {
+  border-color: #035CA8 !important;
+  outline: none;
+}
+
+.dark input::placeholder, 
+.dark textarea::placeholder {
+  color: rgba(245, 242, 237, 0.45) !important;
+}
+
+/* Modal Sidebar Drawer */
+.dark .animate-slide-left {
+  background-color: #0F172A !important;
+  border-color: rgba(245, 242, 237, 0.15) !important;
+}
+
+/* Alert notifications and banners */
+.dark .bg-\[\#035CA8\]\/5 {
+  background-color: rgba(3, 92, 168, 0.1) !important;
+}
+
+.dark .border-\[\#035CA8\]\/25 {
+  border-color: rgba(3, 92, 168, 0.3) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #34D399 !important;
+}
+
+.dark .border-emerald-500\/30 {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
