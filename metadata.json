@@ -1,0 +1,6 @@
+{
+  "name": "ZndZ Enterprise",
+  "description": "Industrial intelligence and supply chain solutions for the global marine fleet. Engineered for high seas reliability, featuring full technical catalogs, inquiry management, and interactive port tracking under an elegant Artistic Flair aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
