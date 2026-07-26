@@ -211,7 +211,6 @@ export function App() {
         handlePopulateFormWithCart={handlePopulateFormWithCart}
         totalCartValue={totalCartValue}
       />
-
     </div>
   );
 }
